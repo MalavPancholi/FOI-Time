@@ -5,14 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FOI Food Menu</title>
 
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header class="header">
-    <h1>FOI Food Menu</h1>
-    <p>Street Style Café • Surat</p>
+    <div class="header-left">
+      <h1>FOI Food Menu</h1>
+      <p>Street Style Café</p>
+    </div>
+
+    <div class="header-right">
+      <p>📍 Surat, Gujarat</p>
+      <p>
+        📞 <a href="tel:9662096903">9662096903</a>
+      </p>
+      <p>
+        📸 <a href="www.facebook.com/FOI.INDORE" target="_blank">
+          Facebook
+        </a>
+      </p>
+    </div>
   </header>
 
   <div class="search-container">
@@ -23,8 +40,18 @@
 
   <main id="menuGrid"></main>
 
-  <!-- DATA FIRST -->
+  <!-- FOOTER -->
+  <footer class="footer">
+    Made by
+    <a href="https://malav-pancholi.vercel.app" target="_blank">
+      <strong>Malav Pancholi</strong>
+    </a>
+    |
+    Contact:
+    <a href="tel:8780363156">8780363156</a>
+  </footer>
+
   <script src="data/menu-data.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>

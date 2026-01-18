@@ -1,40 +1,65 @@
-const categoriesDiv = document.getElementById("categories");
-const menuContainer = document.getElementById("menu-container");
+const categoryBar = document.getElementById("categoryBar");
+const menuGrid = document.getElementById("menuGrid");
+const searchInput = document.getElementById("searchInput");
 
+let currentCategory = "";
+
+/* LOAD CATEGORIES */
 function loadCategories() {
+  categoryBar.innerHTML = "";
+
   Object.keys(menuData).forEach((category, index) => {
     const btn = document.createElement("button");
-    btn.innerText = category;
+    btn.className = "category-btn";
+    btn.textContent = category;
 
     if (index === 0) {
       btn.classList.add("active");
-      loadMenu(category);
+      currentCategory = category;
+      renderMenu(menuData[category]);
     }
 
     btn.onclick = () => {
-      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      document
+        .querySelectorAll(".category-btn")
+        .forEach(b => b.classList.remove("active"));
+
       btn.classList.add("active");
-      loadMenu(category);
+      currentCategory = category;
+      renderMenu(menuData[category]);
     };
 
-    categoriesDiv.appendChild(btn);
+    categoryBar.appendChild(btn);
   });
 }
 
-function loadMenu(category) {
-  menuContainer.innerHTML = "";
+/* RENDER MENU */
+function renderMenu(items) {
+  menuGrid.innerHTML = "";
 
-  menuData[category].forEach(item => {
+  items.forEach(item => {
     const card = document.createElement("div");
-    card.className = "menu-card";
+    card.className = "card";
 
     card.innerHTML = `
       <h3>${item.name}</h3>
-      <div class="price">₹ ${item.price}</div>
+      <p>₹ ${item.price}</p>
     `;
 
-    menuContainer.appendChild(card);
+    menuGrid.appendChild(card);
   });
 }
 
+/* SEARCH */
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+
+  const filtered = menuData[currentCategory].filter(item =>
+    item.name.toLowerCase().includes(query)
+  );
+
+  renderMenu(filtered);
+});
+
+/* INIT */
 loadCategories();
