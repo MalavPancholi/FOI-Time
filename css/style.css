@@ -103,6 +103,7 @@ body {
 .card h3 {
   font-size: 14px;
   margin: 0 0 6px;
+  text-align: center;
 }
 
 .card p {
